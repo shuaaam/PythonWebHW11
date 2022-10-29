@@ -1,0 +1,22 @@
+{% extends 'Base.html' %}
+{% block content %}
+<main class="container">
+  <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="{{ back }}" role="button" class="secondary"> Return</a></li>
+        </ul>
+  </nav>
+  <form method="POST" action="/delete_tag/">
+    <div style="padding: 10px">
+            <label>Select tags:
+                <select name="tags" multiple="multiple" required>
+                  {% for tag in tags %}
+                  <option value="{{tag.tag}}">{{tag.tag}}</option>
+                  {% endfor %}
+                </select>
+            </label>
+        </div>
+      <button type="submit">Submit</button>
+  </form>
+</main>
+{% endblock %}

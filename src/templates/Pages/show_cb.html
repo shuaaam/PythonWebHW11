@@ -1,0 +1,33 @@
+{% extends 'Base.html' %}
+{% block content %}
+    <main class="container">
+      <nav
+        style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px"
+      >
+        <ul>
+          <li><a href="{{ back }}" role="button" style="margin-left: 100px" class="secondary"> Return</a></li>
+            <li><a href="/contactbook/" role="button" style="margin-left: 100px">Add contact</a></li>
+          <li><a href="/change_cb/" role="button" style="margin-left: 100px">Change contact</a></li>
+          <li><a href="/delete_cb/" role="button" style="margin-left: 100px">Delete contact</a></li>
+        </ul>
+      </nav>
+      <h1 style="text-align: center">Contacts:</h1>
+      {% for contactbook in contactbooks %}
+          {% if not contactbook.birthday %}
+          <p>Id: <b>{{contactbook.id}}</b></p>
+          <p>Name: <b>{{contactbook.name}}</b></p>
+          <p>Phone: {{ contactbook.phone }}</p>
+          <p>Birthday: N/A </p>
+          <p>Email: {{ contactbook.email }}</p>
+          <p style="border-bottom: 2px solid"></p>
+          {% else %}
+          <p>Id: <b>{{contactbook.id}}</b></p>
+          <p>Name: <b>{{contactbook.name}}</b></p>
+          <p>Phone: {{ contactbook.phone }}</p>
+          <p>Birthday: <kbd>{{contactbook.birthday.date()}}</kbd></p>
+          <p>Email: {{ contactbook.email }}</p>
+          <p style="border-bottom: 2px solid"></p>
+          {% endif %}
+      {% endfor %}
+    </main>
+{% endblock %}

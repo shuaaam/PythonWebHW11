@@ -1,0 +1,36 @@
+{% extends 'Base.html' %}
+{% block content %}
+<main class="container">
+  <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="{{ back }}" role="button" class="secondary"> Return</a></li>
+        </ul>
+  </nav>
+  <form method="POST" action="/change_cb/">
+    <div style="padding: 10px">
+      <label>Id:
+        <input type="text" name="id" required />
+      </label>
+    </div>
+    <div style="padding: 10px">
+      <label>Phone:
+        <input type="text" name="phone" required />
+      </label>
+    </div>
+    <div style="padding: 10px">
+      <label>Birthday:
+        <input type="text" name="birthday"/>
+      </label>
+    </div>
+    <div style="padding: 10px">
+      <label>Email:
+        <input type="text" name="email"/>
+      </label>
+    </div>
+    <div class="grid">
+      <button type="reset" class="secondary">Reset</button>
+      <button type="submit">Submit</button>
+ </div>
+  </form>
+</main>
+{% endblock %}

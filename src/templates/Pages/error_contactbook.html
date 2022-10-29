@@ -1,0 +1,63 @@
+{% extends 'Base.html' %}
+{% block content %}
+    <main class="container">
+        <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+            <ul>
+                <li><a href="{{ back }}" role="button" class="secondary"> Return</a></li>
+            </ul>
+        </nav>
+        <form method="POST" action="/contactbook">
+            <div style="padding: 10px">
+                <label>Name:
+                    <input type="text" name="name" required/>
+                </label>
+            </div>
+            {% if phone %}
+                <div class="alert alert-info" style="text-align: center; color: red">{{ phone }}</div>
+                <div style="padding: 10px">
+                    <label>Phone:
+                        <input type="text" name="phone" required/>
+                    </label>
+                </div>
+            {% else %}
+                <div style="padding: 10px">
+                    <label>Phone:
+                        <input type="text" name="phone" required/>
+                    </label>
+                </div>
+            {% endif %}
+            {% if birthday %}
+                <div class="alert alert-info" style="text-align: center; color: red">{{ message }}</div>
+                <div style="padding: 10px">
+                    <label>Birthday:
+                        <input type="text" name="birthday"/>
+                    </label>
+                </div>
+            {% else %}
+                <div style="padding: 10px">
+                    <label>Birthday:
+                        <input type="text" name="birthday"/>
+                    </label>
+                </div>
+            {% endif %}
+            {% if email %}
+                <div class="alert alert-info" style="text-align: center; color: red">{{ message }}</div>
+                <div style="padding: 10px">
+                    <label>Email:
+                        <input type="text" name="email"/>
+                    </label>
+                </div>
+            {% else %}
+            <div style="padding: 10px">
+                <label>Email:
+                    <input type="text" name="email"/>
+                </label>
+            </div>
+            {% endif %}
+            <div class="grid">
+                <button type="reset" class="secondary">Reset</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </main>
+{% endblock %}

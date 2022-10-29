@@ -1,0 +1,37 @@
+{% extends 'Base.html' %}
+{% block content %}
+    <main class="container">
+      <nav
+        style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px"
+      >
+        <ul>
+          <li><a href="{{ back }}" role="button" style="margin-left: 43px" class="secondary"> Return</a></li>
+          <li><a href="/note/" role="button" style="margin-left: 43px">Add note</a></li>
+          <li><a href="/tag" role="button" style="margin-left: 43px">Add tag</a></li>
+          <li><a href="/change_note/" role="button" style="margin-left: 43px">Change note</a></li>
+          <li><a href="/delete_note/" role="button" style="margin-left: 43px">Delete note</a></li>
+          <li><a href="/delete_tag/" role="button" style="margin-left: 43px">Delete tag</a></li>
+        </ul>
+      </nav>
+      <h1 style="text-align: center">Notes:</h1>
+        {% for note in notes %}
+          {% if not note.done %}
+              <p>Id: <b>{{note.id}}</b></p>
+              <p>Description: <b>{{note.description}}</b></p>
+              <p>Status: {{ note.status }}
+              <a href="/status/{{note.id}}" role="button" style="margin-bottom: 10px"> ✓</a>
+              </p>
+              <p style="margin-top: 10px">Added: <kbd>{{note.added.date()}}</kbd></p>
+              <p>Tag: {{ note.tags|join(', ', attribute='tag') }}</p>
+              <p style="border-bottom: 2px solid"></p>
+          {% else %}
+              <p>Id: <b>{{note.id}}</b></p>
+              <p>Description: <b>{{note.description}}</b></p>
+              <p>Status: {{ note.status }}</p>
+              <p style="margin-top: 10px">Added: <kbd>{{note.added.date()}}</kbd></p>
+              <p>Tag: {{ note.tags|join(', ', attribute='tag') }}</p>
+              <p style="border-bottom: 2px solid"></p>
+          {% endif %}
+        {% endfor %}
+    </main>
+{% endblock %}

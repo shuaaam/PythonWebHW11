@@ -1,0 +1,28 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+<main class="container">
+  <nav
+    style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+    <ul>
+      <li>
+          <a href="/" role="button" style="margin-left: 0px">Main</a>
+          <a href="/show_cb" role="button" style="margin-left: 200px">ContactBook</a>
+          <a href="/show_note" role="button" style="margin-left: 200px">Notebook</a>
+      </li>
+    </ul>
+  </nav>
+    <div class="" style="text-align: center; font-size: 40px">Welcome to the assistant app</div>
+    <div class="" style="text-align: center; font-size: 30px">Please, choose the task set:</div>
+    <div class="grid">
+      <form action="/show_cb">
+          <button type="submit" style="margin-top: 20px">Contactbook</button>
+      </form>
+      <form action="/show_note">
+          <button type="submit" style="margin-top: 20px">Notebook</button>
+      </form>
+    </div>
+</main>
+
+{% endblock %}
